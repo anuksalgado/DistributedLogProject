@@ -1,3 +1,4 @@
+using DSSystem.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 
@@ -36,5 +37,14 @@ public class HelloWorldController : Controller
         var logGen = new LogGeneration();
         var logs = logGen.GenerateRandomLogs();
         return Ok(logs);
+    }
+
+    [HttpGet("generateLogin")]
+    public IActionResult GenerateLogin()
+    {
+      var logGen = new LoginGenerator();
+      var log = logGen.GenerateLogin();
+      return Ok(log);
+
     }
 }

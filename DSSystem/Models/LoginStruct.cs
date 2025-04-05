@@ -1,0 +1,7 @@
+public class LoginStruct
+{
+  public required String Username {get; set;}
+  public required String Password {get;set;}
+  public required DateTime DateTime {get;set;}
+  public required bool Success {get;set;}
+}
