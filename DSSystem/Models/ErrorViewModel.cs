@@ -1,4 +1,4 @@
-namespace DistributedLogProject.Models;
+namespace DSSystem.Models;
 
 public class ErrorViewModel
 {

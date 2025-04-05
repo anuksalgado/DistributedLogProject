@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using DistributedLogProject.Models;
+using DSSystem.Models;
 
-namespace DistributedLogProject.Controllers;
+namespace DSSystem.Controllers;
 
 public class HomeController : Controller
 {

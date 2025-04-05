@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/anukinho/Documents/GitHub/DistributedLogProject/DistributedLogProject.csproj": {}
+    "/Users/anukinho/Documents/GitHub/DistributedLogProject/DSSystem/DSSystem.csproj": {}
   },
   "projects": {
-    "/Users/anukinho/Documents/GitHub/DistributedLogProject/DistributedLogProject.csproj": {
+    "/Users/anukinho/Documents/GitHub/DistributedLogProject/DSSystem/DSSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/anukinho/Documents/GitHub/DistributedLogProject/DistributedLogProject.csproj",
-        "projectName": "DistributedLogProject",
-        "projectPath": "/Users/anukinho/Documents/GitHub/DistributedLogProject/DistributedLogProject.csproj",
+        "projectUniqueName": "/Users/anukinho/Documents/GitHub/DistributedLogProject/DSSystem/DSSystem.csproj",
+        "projectName": "DSSystem",
+        "projectPath": "/Users/anukinho/Documents/GitHub/DistributedLogProject/DSSystem/DSSystem.csproj",
         "packagesPath": "/Users/anukinho/.nuget/packages/",
-        "outputPath": "/Users/anukinho/Documents/GitHub/DistributedLogProject/obj/",
+        "outputPath": "/Users/anukinho/Documents/GitHub/DistributedLogProject/DSSystem/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/anukinho/.nuget/NuGet/NuGet.Config"
