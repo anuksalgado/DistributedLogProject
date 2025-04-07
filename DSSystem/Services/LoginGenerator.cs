@@ -11,7 +11,7 @@ namespace DSSystem.Services
           "Badiashile", "Gallagher", "Fofana", "James", "Petrov"
       };
 
-      string[] password = {"Hello", "Test", "Password"}; // to be added 
+      string[] password = {"Hello", "Test", "Password"}; 
       Random rnd = new Random();
         public List<LoginStruct> GenerateLogin()
         {

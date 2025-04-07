@@ -1,4 +1,9 @@
+using DSSystem;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DBManager>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
