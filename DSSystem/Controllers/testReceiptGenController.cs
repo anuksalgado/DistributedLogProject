@@ -32,6 +32,7 @@ public class testReceiptController : Controller
       return Ok(itemGen);
     }
 
+    //http://localhost:5249/testReceiptGen?receiptGenCount=5&itemGenCount=10
     [HttpGet("testReceiptGen")]
     public IActionResult receiptGen([FromQuery] int receiptGenCount, [FromQuery] int itemGenCount)
     {
