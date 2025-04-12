@@ -32,13 +32,13 @@ public class testReceiptController : Controller
       return Ok(itemGen);
     }
 
-    // HttpGet("generateRando")]
-    // public IActionResult GenerateRando()
-    // {
-    //     var logGen = new LogGeneration();
-    //     var logs = logGen.GenerateRandomLogs();
-    //     return Ok(logs);
-    // }
+    [HttpGet("testReceiptGen")]
+    public IActionResult receiptGen([FromQuery] int receiptGenCount, [FromQuery] int itemGenCount)
+    {
+      var ReceiptGenerator = new ReceiptGenerator();
+      var itemGen = ReceiptGenerator.receiptGeneratorClass(receiptGenCount,itemGenCount);
+      return Ok(itemGen);
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

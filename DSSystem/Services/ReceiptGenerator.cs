@@ -9,14 +9,72 @@ namespace DSSystem.Services
 
       return items;
     }
+
+    public List<ReceiptStruct> receiptGeneratorClass(int receiptCount, int itemCount)
+    {
+      ReceiptGeneratorClass receiptGeneratorClass= new ReceiptGeneratorClass();
+      List<ReceiptStruct> receipts = receiptGeneratorClass.receiptGenerator(receiptCount, itemCount);
+
+      return receipts;
+    }
     
   }
 
   
 }
 
+public class ReceiptGeneratorClass
+{
+  //class to generate receipts
+  private Random gen = new Random();
+  DateTime RandomDay()
+  {
+      DateTime start = new DateTime(2020, 1, 1);
+      int range = (DateTime.Today - start).Days;           
+      return start.AddDays(gen.Next(range));
+  }
+  internal List<ReceiptStruct> receiptGenerator(int reiceiptCount, int itemCount)
+  {
+    List<String> names = new List<String>()
+    {
+      "Anuk", "Palmer", "Jokovic", "Hazard", "Enzo", "Caicedo", "Lavia", "Cech", "Drogba", "Lamps", "Carvalho",
+      "Mount", "Kante", "Reece", "Silva", "Chilwell", "Sterling", "Gusto", "Nkunku", "Broja",
+      "Badiashile", "Gallagher", "Fofana", "James", "Petrov"
+    };
+    
+    List <ReceiptStruct>receipts = new List<ReceiptStruct>();
+    List <itemStruct>itemsCollection = new List<itemStruct>();
+    Random rnd = new();
+    names = ShufflerClass.Shuffle(names,rnd).ToList(); //shuffling names
+    for(int i = 0; i < reiceiptCount; i++)
+    {
+      if(i == names.Count)
+      {
+        names = ShufflerClass.Shuffle(names,rnd).ToList(); //shuffling names
+      }
+      itemGeneratorClass itemGeneratorClass = new itemGeneratorClass();
+      itemsCollection = itemGeneratorClass.itemGenerator(itemCount);
+      receipts.Add(new ReceiptStruct()
+        {
+          puchaseDate = RandomDay(),
+          cusName = names[rnd.Next(names.Count - 1)], //setting the cusName to a random index within shuffled names
+          items = itemsCollection,
+        });
+    }
+    return receipts;
+    
+    /*
+    public class ReceiptStruct
+{
+  public List<itemStruct> items { get; set; } = new List<itemStruct>(); //receipt can hold multiple items
+  public DateTime puchaseDate {get;set;}
+  public string cusName {get;set;}
+}*/
+  }
+}
 public class itemGeneratorClass
 {
+  //Class generates items
   List<String> itemNames = new List<String>()
   {
     "Tomato", "Onion", "Chillies", "Cat Food", "Coca cola", "Chicken"
@@ -29,10 +87,11 @@ public class itemGeneratorClass
   private Random gen = new Random();
   DateTime RandomDay()
   {
-      DateTime start = new DateTime(1995, 1, 1);
+      DateTime start = new DateTime(2020, 1, 1);
       int range = (DateTime.Today - start).Days;           
       return start.AddDays(gen.Next(range));
   }
+  //function which takes in an itemCount to generate a specific number of items as per itemCount
   internal List<itemStruct> itemGenerator(int ItemCount)
     {
       List <itemStruct>items = new List<itemStruct>();
