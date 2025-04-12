@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace DSSystem
 {
-  internal class DBManager : DbContext
+  public class DBManager : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -47,6 +47,8 @@ namespace DSSystem
             Success = true
         };
         logins.Add(login);
+
+        
 
         modelBuilder.Entity<LoginStruct>().HasData(logins);
 

@@ -27,7 +27,8 @@ namespace DSSystem.Controllers
             return await _context.LoginStruct.ToListAsync();
         }
 
-        // GET: api/LogMessage/5
+        //http://localhost:5249/api/LogMessage/Burn
+        // GET: api/LogMessage/5 //ID is Username as thats the ID
         [HttpGet("{id}")]
         public async Task<ActionResult<LoginStruct>> GetLoginStruct(string id)
         {
