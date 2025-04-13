@@ -1,0 +1,15 @@
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/bin/Debug/net9.0/DSShared.deps.json
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/bin/Debug/net9.0/DSShared.runtimeconfig.json
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/bin/Debug/net9.0/DSShared.dll
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/bin/Debug/net9.0/DSShared.pdb
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.csproj.AssemblyReference.cache
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.AssemblyInfoInputs.cache
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.AssemblyInfo.cs
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.csproj.CoreCompileInputs.cache
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.sourcelink.json
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.dll
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/refint/DSShared.dll
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.pdb
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/DSShared.genruntimeconfig.cache
+/Users/anukinho/Documents/GitHub/DistributedLogProject/DSShared/obj/Debug/net9.0/ref/DSShared.dll
