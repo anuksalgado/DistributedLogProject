@@ -5,11 +5,11 @@ using DSSystem.Services;
 
 namespace DSSystem.Controllers;
 
-public class testReceiptController : Controller
+public class ReceiptController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public testReceiptController(ILogger<HomeController> logger)
+    public ReceiptController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
@@ -46,4 +46,16 @@ public class testReceiptController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-}
+
+    // [HttpPost]
+    // public async Task<IActionResult> PostItem(String itemName, int price, int quanity, string ReceiptStructReceiptID)
+    // {
+        
+    // }
+
+    // [HttpPost]
+    // public async Task<IActionResult> PostReceipt()
+    // {
+        
+    }
+
