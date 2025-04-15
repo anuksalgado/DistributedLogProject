@@ -10,12 +10,11 @@ namespace DSSystem.Services
       return items;
     }
 
-    public List<ReceiptStruct> receiptGeneratorClass(int receiptCount, int itemCount)
+    public (List<ReceiptStruct> receipts, List<itemStruct> items) receiptGeneratorClass(int receiptCount, int itemCount)
     {
       ReceiptGeneratorClass receiptGeneratorClass= new ReceiptGeneratorClass();
-      List<ReceiptStruct> receipts = receiptGeneratorClass.receiptGenerator(receiptCount, itemCount);
-
-      return receipts;
+      var (receipts, items) = receiptGeneratorClass.receiptGenerator(receiptCount, itemCount);
+      return (receipts,items);
     }
     
   }
@@ -33,7 +32,7 @@ public class ReceiptGeneratorClass
       int range = (DateTime.Today - start).Days;           
       return start.AddDays(gen.Next(range));
   }
-  internal List<ReceiptStruct> receiptGenerator(int reiceiptCount, int itemCount)
+  internal (List<ReceiptStruct> receipts, List<itemStruct> items) receiptGenerator(int reiceiptCount, int itemCount)
   {
     List<String> names = new List<String>()
     {
@@ -44,24 +43,37 @@ public class ReceiptGeneratorClass
     
     List <ReceiptStruct>receipts = new List<ReceiptStruct>();
     List <itemStruct>itemsCollection = new List<itemStruct>();
+    List<itemStruct> allItems = new();
     Random rnd = new();
+    var itemGen = new itemGeneratorClass();
     names = ShufflerClass.Shuffle(names,rnd).ToList(); //shuffling names
+    int itemIdCounter = 1;
     for(int i = 0; i < reiceiptCount; i++)
     {
       if(i == names.Count)
       {
         names = ShufflerClass.Shuffle(names,rnd).ToList(); //shuffling names
       }
-      itemGeneratorClass itemGeneratorClass = new itemGeneratorClass();
-      itemsCollection = itemGeneratorClass.itemGenerator(itemCount);
+      var receiptID = ReceiptIDGenerator.GenerateID();
+      var items = itemGen.itemGenerator(itemCount).Select(item => new itemStruct //making new itemStruct with item (generated from class) and id & receiptStruct added to it
+      {
+        Id = itemIdCounter++, //adding to generated itemStruct
+        itemName = item.itemName,
+        price = item.price,
+        quantity = item.quantity,
+        MFD = item.MFD,
+        ReceiptStructReceiptID = receiptID //adding to generated itemStruct
+    }).ToList();
+      allItems.AddRange(items);
       receipts.Add(new ReceiptStruct()
         {
           puchaseDate = RandomDay(),
           cusName = names[rnd.Next(names.Count - 1)], //setting the cusName to a random index within shuffled names
-          items = itemsCollection,
+          ReceiptID = receiptID,
+          items = null!
         });
     }
-    return receipts;
+    return (receipts, allItems);
     
     /*
     public class ReceiptStruct
