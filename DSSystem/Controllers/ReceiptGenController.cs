@@ -5,11 +5,11 @@ using DSSystem.Services;
 
 namespace DSSystem.Controllers;
 
-public class ReceiptController : Controller
+public class ReceiptGenController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public ReceiptController(ILogger<HomeController> logger)
+    public ReceiptGenController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
