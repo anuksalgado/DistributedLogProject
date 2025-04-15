@@ -31,7 +31,7 @@ namespace DSSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ReceiptStruct>> GetReceiptStruct(string id)
         {
-            var receiptStruct = await _context.receiptStruct.FindAsync(id);
+            var receiptStruct = await _context.receiptStruct.Include(r => r.items).FirstOrDefaultAsync(r => r.ReceiptID == id);
 
             if (receiptStruct == null)
             {
@@ -81,7 +81,6 @@ namespace DSSystem.Controllers
             var receiptStruct = new ReceiptStruct
             {
                 ReceiptID = ReceiptIDGenerator.GenerateID(),
-                items = receiptStructDTO.items,
                 cusName = receiptStructDTO.cusName,
                 puchaseDate = DateTime.Now
             };
@@ -89,6 +88,20 @@ namespace DSSystem.Controllers
             while (await _context.receiptStruct.AnyAsync(b => b.ReceiptID == receiptStruct.ReceiptID))
             {
                 receiptStruct.ReceiptID = ReceiptIDGenerator.GenerateID();
+            }
+            
+            foreach (var itemDto in receiptStructDTO.items)
+            {
+                var item = new itemStruct
+                {
+                    itemName = itemDto.itemName,
+                    price = itemDto.price,
+                    quantity = itemDto.quantity,
+                    MFD = itemDto.MFD,
+                    ReceiptStructReceiptID = receiptStruct.ReceiptID
+                };
+
+                receiptStruct.items.Add(item);
             }
             _context.receiptStruct.Add(receiptStruct);
             try
@@ -99,7 +112,7 @@ namespace DSSystem.Controllers
             {
                 if (ReceiptStructExists(receiptStruct.ReceiptID))
                 {
-                    return Conflict();
+                    return BadRequest("ReceiptID exists and couldnt be assigned a unique value");
                 }
                 else
                 {
@@ -131,10 +144,19 @@ namespace DSSystem.Controllers
             return _context.receiptStruct.Any(e => e.ReceiptID == id);
         }
 
+        //DTO for the posting of a receipt
         public class ReceiptCreateDto
         {
-            public List<itemStruct> items { get; set; } = new List<itemStruct>();
+            public List<ItemCreateDto> items { get; set; } = new List<ItemCreateDto>(); //this uses the DTO below when creating Items so we wont get any issues with receiptStructReceiptID FK
             public string cusName { get; set; }
+        }
+
+        public class ItemCreateDto
+        {
+            public string itemName { get; set; } = default!;
+            public int price { get; set; }
+            public int quantity { get; set; }
+            public DateTime MFD { get; set; }
         }
     }
 }

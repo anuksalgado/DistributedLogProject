@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 public class itemStruct
 {
@@ -10,5 +11,6 @@ public class itemStruct
     public int quantity { get; set; }
 
     public string ReceiptStructReceiptID { get; set; } = default!; //FK
+    [JsonIgnore]
     public ReceiptStruct? ReceiptStruct { get; set; }
 }
