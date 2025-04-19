@@ -1,24 +1,31 @@
-﻿namespace DSMAUI;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+
+namespace DSMAUI;
+
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	 public ObservableCollection<itemStruct> items { get; } = new(); //gets set in XAML for display
 
+	public async Task loadItems()
+	{
+		
+		var service = new ItemService();
+		var result = await service.GetItemsAsync();
+		
+		foreach(var item in result)
+		{
+			items.Add(item);
+			//System.Diagnostics.Debug.WriteLine($"Tester item {item.itemName}");
+		}
+	}
 	public MainPage()
 	{
+		//Trace.WriteLine($"Got items");
 		InitializeComponent();
+		BindingContext = this;
+		_ = loadItems();
 	}
-
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+	
 }
-
