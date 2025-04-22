@@ -1,27 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DSMAUI.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+    <VerticalStackLayout Padding="30,0" Spacing="25">
+        <Image
+            Source="dotnet_bot.png"
+            HeightRequest="185"
+            Aspect="AspectFit"
+            SemanticProperties.Description="dot net bot in a hovercraft number nine" />
 
-            <Picker 
-                x:Name="itemShower"
-                Title="Select an item"
-                ItemsSource="{Binding items}"
-                ItemDisplayBinding="{Binding Display}"
-                HeightRequest="44"
-                WidthRequest="296" />
+          <ScrollView x:Name="scrollViewItems"
+            Orientation="Horizontal"
+            HorizontalScrollBarVisibility="Always">
+                <StackLayout x:Name="stackLayout" Orientation="Horizontal" Spacing="8"/>
+            </ScrollView>
 
-        </VerticalStackLayout>
-    </ScrollView>
- 
+        <CollectionView
+            x:Name="multiItemSelector"
+            ItemsSource="{Binding items}"
+            SelectionMode="Multiple"
+            SelectionChanged="OnSelectionChanged"
+            HeightRequest="400">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" BackgroundColor="LightGray" Margin="5">
+                        <Label Text="{Binding Display}" FontSize="16" TextColor="Black" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
 </ContentPage>
