@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DSMAUI.MainPage">
 
+    <ScrollView>
     <VerticalStackLayout Padding="30,0" Spacing="25">
         <Image
             Source="dotnet_bot.png"
@@ -30,5 +31,20 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Button Text="Purchase"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="purchaseButtonClick" />
+        
+        <!-- 
+        Test NAV button
+         <Button Text="Test Nav"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Clicked="TestNav" />
+        -->
+       
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
