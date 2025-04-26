@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OYFxD01fa00=",
+  "dgSpecHash": "z04w5ID8qNw=",
   "success": true,
   "projectFilePath": "/Users/anukinho/Documents/GitHub/DistributedLogProject/DSMAUI/DSMAUI.csproj",
   "expectedPackageFiles": [
+    "/Users/anukinho/.nuget/packages/confluent.kafka/2.10.0/confluent.kafka.2.10.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/googlegson/2.11.0.3/googlegson.2.11.0.3.nupkg.sha512",
+    "/Users/anukinho/.nuget/packages/librdkafka.redist/2.10.0/librdkafka.redist.2.10.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.extensions.configuration/9.0.0/microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.0/microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.0/microsoft.extensions.dependencyinjection.9.0.0.nupkg.sha512",
@@ -23,6 +25,9 @@
     "/Users/anukinho/.nuget/packages/microsoft.maui.graphics/9.0.14/microsoft.maui.graphics.9.0.14.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.maui.resizetizer/9.0.14/microsoft.maui.resizetizer.9.0.14.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.net.illink.tasks/9.0.3/microsoft.net.illink.tasks.9.0.3.nupkg.sha512",
+    "/Users/anukinho/.nuget/packages/rabbitmq.client/7.1.2/rabbitmq.client.7.1.2.nupkg.sha512",
+    "/Users/anukinho/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
+    "/Users/anukinho/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/xamarin.android.glide/4.16.0.6/xamarin.android.glide.4.16.0.6.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/xamarin.android.glide.annotations/4.16.0.6/xamarin.android.glide.annotations.4.16.0.6.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/xamarin.android.glide.disklrucache/4.16.0.6/xamarin.android.glide.disklrucache.4.16.0.6.nupkg.sha512",
