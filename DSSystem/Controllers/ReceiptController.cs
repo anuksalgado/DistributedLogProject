@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DSSystem;
+using System.Diagnostics;
+using Confluent.Kafka;
 
 namespace DSSystem.Controllers
 {
@@ -14,10 +16,22 @@ namespace DSSystem.Controllers
     public class ReceiptController : ControllerBase
     {
         private readonly DBManager _context;
+        private IProducer<Null, string> _producer;
 
         public ReceiptController(DBManager context)
         {
             _context = context;
+            InitializeKafkaProducer();
+        }
+        private void InitializeKafkaProducer()
+        {
+            var config = new ProducerConfig
+            {
+                BootstrapServers = "localhost:9092",
+                ClientId = "ReceiptService"
+            };
+
+            _producer = new ProducerBuilder<Null, string>(config).Build();
         }
 
         // GET: api/Receipt
@@ -107,6 +121,7 @@ namespace DSSystem.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                await ProduceReceiptToKafka(receiptStruct);
             }
             catch (DbUpdateException)
             {
@@ -121,6 +136,28 @@ namespace DSSystem.Controllers
             }
 
             return CreatedAtAction("GetReceiptStruct", new { id = receiptStruct.ReceiptID }, receiptStruct);
+        }
+
+        private async Task ProduceReceiptToKafka(ReceiptStruct receipt)
+        {
+            if (_producer == null)
+            {
+                throw new InvalidOperationException("Kafka producer is not initialized");
+            }
+            var receiptJson = System.Text.Json.JsonSerializer.Serialize(receipt);
+            try
+            {
+                var deliveryResult = await _producer.ProduceAsync("receipts", new Message<Null, string> { Value = receiptJson });
+                Debug.WriteLine($"Delivered receipt to Kafka at {deliveryResult.TopicPartitionOffset}");
+            }
+            catch (ProduceException<Null, string> ex)
+            {
+                Debug.WriteLine($"Kafka Produce Error: {ex.Error.Reason}");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($" Exception during ProduceAsync: {ex.Message}");
+            }
         }
 
         // DELETE: api/Receipt/5

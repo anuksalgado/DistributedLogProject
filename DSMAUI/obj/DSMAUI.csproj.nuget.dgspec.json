@@ -45,10 +45,6 @@
         "net9.0-android35.0": {
           "targetAlias": "net9.0-android",
           "dependencies": {
-            "Confluent.Kafka": {
-              "target": "Package",
-              "version": "[2.10.0, )"
-            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[9.0.0, )"

@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "z04w5ID8qNw=",
+  "dgSpecHash": "q+CTBlhqKiI=",
   "success": true,
   "projectFilePath": "/Users/anukinho/Documents/GitHub/DistributedLogProject/DSMAUI/DSMAUI.csproj",
   "expectedPackageFiles": [
-    "/Users/anukinho/.nuget/packages/confluent.kafka/2.10.0/confluent.kafka.2.10.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/googlegson/2.11.0.3/googlegson.2.11.0.3.nupkg.sha512",
-    "/Users/anukinho/.nuget/packages/librdkafka.redist/2.10.0/librdkafka.redist.2.10.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.extensions.configuration/9.0.0/microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.0/microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
     "/Users/anukinho/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.0/microsoft.extensions.dependencyinjection.9.0.0.nupkg.sha512",

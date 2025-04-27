@@ -4,9 +4,9 @@ using Microsoft.Maui.Layouts;
 using Microsoft.Maui.Controls.Shapes;
 using GradientStop = Microsoft.Maui.Controls.GradientStop;
 using Xamarin.Google.ErrorProne.Annotations;
-using Confluent.Kafka;
 using System.Text.Json;
 using System.Net;
+using System.Threading.Tasks;
 
 
 namespace DSMAUI;
@@ -14,33 +14,7 @@ namespace DSMAUI;
 
 public partial class MainPage : ContentPage
 {
-	private async Task ProduceReceiptToKafka(ReceiptStruct receipt)
-{
-    var config = new ProducerConfig
-    {
-        BootstrapServers = "localhost:9092", // Adjust if Kafka is not local
-        ClientId = Dns.GetHostName()
-    };
-
-    using var producer = new ProducerBuilder<Null, string>(config).Build();
-    
-    var receiptJson = JsonSerializer.Serialize(receipt);
-    
-    try
-    {
-        var deliveryResult = await producer.ProduceAsync(
-            "receipts", // <-- your topic name
-            new Message<Null, string> { Value = receiptJson }
-        );
-        Debug.WriteLine($"Delivered receipt to Kafka at {deliveryResult.TopicPartitionOffset}");
-    }
-    catch (ProduceException<Null, string> ex)
-    {
-        Debug.WriteLine($"Kafka Produce Error: {ex.Error.Reason}");
-    }
-}
-
-	 public ObservableCollection<itemStruct> items { get; } = new(); //gets set in XAML for display
+		 public ObservableCollection<itemStruct> items { get; } = new(); //gets set in XAML for display
 		//StackLayout stackLayout = new StackLayout();
 
 		IEnumerable<itemStruct> historicSelection = Enumerable.Empty<itemStruct>();
@@ -50,7 +24,7 @@ public partial class MainPage : ContentPage
 	{
 		//Trace.WriteLine($"Got items");
 		InitializeComponent();
-		BindingContext = this;
+		BindingContext = this;	
 		_ = loadItems();
 	}
 	public async Task loadItems()
@@ -149,7 +123,8 @@ public partial class MainPage : ContentPage
 
 			if(receipt != null)
 			{
-				await ProduceReceiptToKafka(receipt);
+				//Debug.WriteLine($"Receipt Gen ");
+				//await ProduceReceiptToKafka(receipt);
 				await DisplayAlert("Purchase", "Receipt generated", "OK");
 				await Navigation.PushAsync(new Receipt(receipt.cusName, receipt));
 			}
@@ -165,6 +140,5 @@ public partial class MainPage : ContentPage
 		// 		string cusName = "Test Customer";
     //     await Navigation.PushAsync(new Receipt(cusName, receipt));
     // }
-	
 }
 
