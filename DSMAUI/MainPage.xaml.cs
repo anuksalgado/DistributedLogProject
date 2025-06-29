@@ -4,13 +4,17 @@ using Microsoft.Maui.Layouts;
 using Microsoft.Maui.Controls.Shapes;
 using GradientStop = Microsoft.Maui.Controls.GradientStop;
 using Xamarin.Google.ErrorProne.Annotations;
+using System.Text.Json;
+using System.Net;
+using System.Threading.Tasks;
+
 
 namespace DSMAUI;
 
 
 public partial class MainPage : ContentPage
 {
-	 public ObservableCollection<itemStruct> items { get; } = new(); //gets set in XAML for display
+		 public ObservableCollection<itemStruct> items { get; } = new(); //gets set in XAML for display
 		//StackLayout stackLayout = new StackLayout();
 
 		IEnumerable<itemStruct> historicSelection = Enumerable.Empty<itemStruct>();
@@ -20,7 +24,7 @@ public partial class MainPage : ContentPage
 	{
 		//Trace.WriteLine($"Got items");
 		InitializeComponent();
-		BindingContext = this;
+		BindingContext = this;	
 		_ = loadItems();
 	}
 	public async Task loadItems()
@@ -119,6 +123,8 @@ public partial class MainPage : ContentPage
 
 			if(receipt != null)
 			{
+				//Debug.WriteLine($"Receipt Gen ");
+				//await ProduceReceiptToKafka(receipt);
 				await DisplayAlert("Purchase", "Receipt generated", "OK");
 				await Navigation.PushAsync(new Receipt(receipt.cusName, receipt));
 			}
@@ -134,6 +140,5 @@ public partial class MainPage : ContentPage
 		// 		string cusName = "Test Customer";
     //     await Navigation.PushAsync(new Receipt(cusName, receipt));
     // }
-	
 }
 

@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[9.0.3, )",
               "autoReferenced": true
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[7.1.2, )"
             }
           },
           "imports": [
