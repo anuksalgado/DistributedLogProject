@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DSMAUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+c6f6890aed9b6acba69e075708e1cc2eb9213b3b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+6c4be60afa825a89234f4d172afcbc5b87e039c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DSMAUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DSMAUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
